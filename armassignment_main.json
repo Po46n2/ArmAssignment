@@ -1,0 +1,87 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "artifactsLocation": {
+            "defaultValue": "https://raw.githubusercontent.com/Po46n2/ArmAssignment/master",
+            "type": "string",            
+            "metadata": {
+                "description": "URL to location of linked templates"
+            }
+        },
+        "virtualNetwork_name": {
+            "defaultValue": "armassignmentvnet",
+            "type": "String",
+            "metadata": {
+                "description": "Name of the virtual network to be created"
+            }
+        },
+        "location": {
+            "defaultValue": "westeurope",
+            "type": "String",
+            "metadata": {
+                "description": "Name of the location where the virtual network should be created"
+            }
+        },
+        "addressPrefixes": {
+            "defaultValue": ["10.0.10.0/24"],
+            "type": "array",
+            "metadata": {
+                "description": "Address range of the virtual network."
+            }
+        },
+        "virtualNetwork_subnet_name": {
+            "defaultValue": "armassignmentvnetsubnet01",
+            "type": "String",
+            "metadata": {
+                "description": "Name of the subnet to be created"
+            }
+        },
+        "subnetAddressPrefix": {
+            "defaultValue": "10.0.10.0/27",
+            "type": "string",
+            "metadata": {
+                "description": "Address range of the subnet."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "vnet",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('artifactsLocation'),'/vNet.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "virtualNetwork_name": {"value":"[parameters('virtualNetwork_name')]"},
+                    "location": {"value":"[parameters('location')]"},
+                    "addressPrefixes": {"value":"[parameters('addressPrefixes')]"}
+                }
+            }
+        },
+        {
+            "name": "subnet",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('artifactsLocation'),'/subnet.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "virtualNetwork_name": {"value":"[parameters('virtualNetwork_name')]"},
+                    "location": {"value":"[parameters('location')]"},
+                    "virtualNetwork_subnet_name": {"value":"[parameters('virtualNetwork_subnet_name')]"},
+                    "subnetAddressPrefix": {"value":"[parameters('subnetAddressPrefix')]"}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

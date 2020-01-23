@@ -37,9 +37,6 @@
             "type": "Microsoft.Network/virtualNetworks/subnets",
             "apiVersion": "2019-11-01",
             "name": "[concat(parameters('virtualNetwork_name'), '/', parameters('virtualNetwork_subnet_name'))]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetwork_name'))]"
-            ],
             "properties": {
                 "addressPrefix": "[parameters('subnetAddressPrefix')]",
                 "serviceEndpoints": [
