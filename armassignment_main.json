@@ -86,7 +86,6 @@
                 },
                 "parameters": {
                     "virtualNetwork_name": {"value":"[parameters('virtualNetwork_name')]"},
-                    "location": {"value":"[parameters('location')]"},
                     "virtualNetwork_subnet_name": {"value":"[parameters('virtualNetwork_subnet_name')]"},
                     "subnetAddressPrefix": {"value":"[parameters('subnetAddressPrefix')]"},
                     "subnetEndpoints": {"value":"[parameters('subnetEndpoints')]"}
