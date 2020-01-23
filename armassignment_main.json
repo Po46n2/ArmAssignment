@@ -45,6 +45,7 @@
             }
         },
         "subnetEndpoints": {
+            "defaultValue": [],
             "type": "array",
             "metadata": {
                 "description": "Array of Subent Enpoints to be created"
