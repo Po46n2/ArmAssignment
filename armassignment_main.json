@@ -68,6 +68,9 @@
             "name": "subnet",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
+            "dependsOn": [
+                "vnet"
+            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
