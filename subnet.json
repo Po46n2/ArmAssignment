@@ -39,7 +39,6 @@
             "properties": {
                 "addressPrefix": "[parameters('subnetAddressPrefix')]",
                 "serviceEndpoints": "[parameters('subnetEndpoints')]",
-                "delegations": [],
                 "privateEndpointNetworkPolicies": "Disabled",
                 "privateLinkServiceNetworkPolicies": "Enabled"
             }
