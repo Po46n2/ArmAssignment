@@ -43,6 +43,12 @@
             "metadata": {
                 "description": "Address range of the subnet."
             }
+        },
+        "subnetEndpoints": {
+            "type": "array",
+            "metadata": {
+                "description": "Array of Subent Enpoints to be created"
+            }
         }
     },
     "variables": {},
@@ -81,7 +87,8 @@
                     "virtualNetwork_name": {"value":"[parameters('virtualNetwork_name')]"},
                     "location": {"value":"[parameters('location')]"},
                     "virtualNetwork_subnet_name": {"value":"[parameters('virtualNetwork_subnet_name')]"},
-                    "subnetAddressPrefix": {"value":"[parameters('subnetAddressPrefix')]"}
+                    "subnetAddressPrefix": {"value":"[parameters('subnetAddressPrefix')]"},
+                    "subnetEndpoints": {"value":"[parameters('subnetEndpoints')]"}
                 }
             }
         }
