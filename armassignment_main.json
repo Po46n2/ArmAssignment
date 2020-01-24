@@ -17,7 +17,7 @@
         "location": {
            "type": "String",
             "metadata": {
-                "description": "Name of the location where the resources should be created"
+                "description": "Location where the resources will be created"
             }
         },
         "addressPrefixes": {
@@ -67,7 +67,6 @@
         "webAppSvcPlanName": {
             "type": "string",
             "minLength": 1,
-            "defaultValue": "AppSvcPlan",
             "metadata": {
             "description": "Name of AppSvc Plan."
             }
@@ -79,7 +78,7 @@
             }
         }
     },
-    "variables": {"subnetFullPath": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',parameters('virtualNetwork_name'),'/subnets/',parameters('virtualNetwork_subnet_name'))]"},
+    "variables": {},
     "resources": [
         {
             "name": "vnet",
@@ -136,7 +135,7 @@
                     "storageAccount_name": {"value":"[parameters('storageAccount_name')]"},
                     "storageSku": {"value":"[parameters('storageSku')]"},
                     "storageAccessTier": {"value":"[parameters('storageAccessTier')]"},
-                    "subnetFullPath": {"value":"[variables('subnetFullPath')]"},
+                    "virtualNetwork_subnet_name": {"value":"[variables('virtualNetwork_subnet_name')]"},
                     "location": {"value":"[parameters('location')]"}
                 }
             }

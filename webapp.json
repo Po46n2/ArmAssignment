@@ -73,15 +73,10 @@
         "type": "Microsoft.Web/sites",
         "location": "[parameters('location')]",
         "apiVersion": "2015-08-01",
-        "dependsOn": [
-          "[concat('Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]"
-        ],
         "tags": {
-          "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]": "Resource",
           "displayName": "WebApp"
         },
         "properties": {
-          "name": "[parameters('WebAppName')]",
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]"
         },
         "resources": [

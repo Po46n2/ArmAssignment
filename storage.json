@@ -31,17 +31,17 @@
                 "description": "Defines the storage account access tier to use for the data lake store"
             }
         },
-        "subnetFullPath": {
+        "virtualNetwork_subnet_name": {
             "type": "String",
             "metadata": {
-                "description": "Full path to the vNet Subnet"
+                "description": "Virtual Network's Subnet name"
             }
         },
         "location": {
             "defaultValue": "westeurope",
             "type": "String",
             "metadata": {
-                "description": "Name of the location where the virtual network subnet was created"
+                "description": "Location where the resources will be created"
             }
         }
     },
@@ -62,7 +62,7 @@
                     "bypass": "AzureServices",
                     "virtualNetworkRules": [
                         {
-                            "id": "[parameters('subnetFullPath')]",
+                            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetwork_subnet_name'))]",
                             "action": "Allow",
                             "state": "Succeeded"
                         }
