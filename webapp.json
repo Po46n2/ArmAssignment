@@ -11,14 +11,7 @@
         }
       },
       "webAppSvcPlanSku": {
-        "type": "string",
-        "allowedValues": [
-          "Free",
-          "Shared",
-          "Basic",
-          "Standard"
-        ],
-        "defaultValue": "Basic",
+        "type": "object",
         "metadata": {
           "description": "App Svc Plan SKU."
         }
@@ -75,22 +68,6 @@
       "storageAccountId": "[concat(resourceGroup().id,'/providers/Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
     },
     "resources": [
-      {
-        "name": "[parameters('WebAppSvcPlanName')]",
-        "type": "Microsoft.Web/serverfarms",
-        "location": "[parameters('location')]",
-        "apiVersion": "2014-06-01",
-        "dependsOn": [],
-        "tags": {
-          "displayName": "AppSvcPlan"
-        },
-        "properties": {
-          "name": "[parameters('WebAppSvcPlanName')]",
-          "sku": "[parameters('WebAppSvcPlanSKU')]",
-          "workerSize": "[parameters('WebAppSvcPlanWorkerSize')]",
-          "numberOfWorkers": 1
-        }
-      },
       {
         "name": "[parameters('WebAppName')]",
         "type": "Microsoft.Web/sites",

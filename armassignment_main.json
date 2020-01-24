@@ -3,53 +3,45 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "artifactsLocation": {
-            "defaultValue": "https://raw.githubusercontent.com/Po46n2/ArmAssignment/master",
             "type": "string",            
             "metadata": {
                 "description": "URL to location of linked templates"
             }
         },
         "virtualNetwork_name": {
-            "defaultValue": "armassignmentvnet",
             "type": "String",
             "metadata": {
                 "description": "Name of the virtual network to be created"
             }
         },
         "location": {
-            "defaultValue": "westeurope",
-            "type": "String",
+           "type": "String",
             "metadata": {
                 "description": "Name of the location where the resources should be created"
             }
         },
         "addressPrefixes": {
-            "defaultValue": ["10.0.10.0/24"],
             "type": "array",
             "metadata": {
                 "description": "Address range of the virtual network."
             }
         },
         "virtualNetwork_subnet_name": {
-            "defaultValue": "armassignmentvnetsubnet01",
             "type": "String",
             "metadata": {
                 "description": "Name of the subnet to be created"
             }
         },
         "subnetAddressPrefix": {
-            "defaultValue": "10.0.10.0/27",
             "type": "string",
             "metadata": {
                 "description": "Address range of the subnet."
             }
         },
         "storageAccount_name": {
-            "defaultValue": "storagev2",
             "type": "String"
         },
         "storageSku": {
-            "defaultValue": "Standard_RAGRS",
             "allowedValues": [
                 "Standard_LRS",
                 "Standard_ZRS",
@@ -63,7 +55,6 @@
 
         },
         "storageAccessTier": {
-            "defaultValue": "Hot",
             "allowedValues": [
                 "Hot",
                 "Cool"
@@ -71,6 +62,20 @@
             "type": "String",
             "metadata": {
                 "description": "Defines the storage account access tier to use for the data lake store"
+            }
+        },
+        "webAppSvcPlanName": {
+            "type": "string",
+            "minLength": 1,
+            "defaultValue": "AppSvcPlan",
+            "metadata": {
+            "description": "Name of AppSvc Plan."
+            }
+        },
+            "webAppSvcPlanSku": {
+            "type": "object",
+            "metadata": {
+                "description": "App Svc Plan SKU."
             }
         }
     },
@@ -132,6 +137,23 @@
                     "storageSku": {"value":"[parameters('storageSku')]"},
                     "storageAccessTier": {"value":"[parameters('storageAccessTier')]"},
                     "subnetFullPath": {"value":"[variables('subnetFullPath')]"},
+                    "location": {"value":"[parameters('location')]"}
+                }
+            }
+        },
+        {
+            "name": "webappsvcplan",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('artifactsLocation'),'/webappsvcplan.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webAppSvcPlanName": {"value":"[parameters('webAppSvcPlanName')]"},
+                    "webAppSvcPlanSku": {"value":"[parameters('webAppSvcPlanSku')]"},
                     "location": {"value":"[parameters('location')]"}
                 }
             }

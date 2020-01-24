@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "webAppSvcPlanName": {
+        "type": "string",
+        "minLength": 1,
+        "defaultValue": "AppSvcPlan",
+        "metadata": {
+          "description": "Name of AppSvc Plan."
+        }
+      },
+      "webAppSvcPlanSku": {
+        "type": "object",
+        "metadata": {
+          "description": "App Svc Plan SKU."
+        }
+      },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "resource location."
+        }
+      }
+    },
+    "variables": {},
+    "resources": [
+      {
+        "name": "[parameters('WebAppSvcPlanName')]",
+        "type": "Microsoft.Web/serverfarms",
+        "location": "[parameters('location')]",
+        "apiVersion": "2018-02-01",
+        "tags": {
+          "displayName": "AppSvcPlan"
+        },
+        "kind": "app",
+        "sku": "[parameters('WebAppSvcPlanSKU')]",
+        "properties": {}
+      }    ],
+    "outputs": {}
+  }
+  

@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+        "artifactsLocation": {
+            "value": "https://raw.githubusercontent.com/Po46n2/ArmAssignment/master"  
+        },
+        "virtualNetwork_name": {
+            "value": "armassignmentvnet"
+        },
+        "location": {
+            "value": "westeurope"
+        },
+        "addressPrefixes": {
+            "value": ["10.0.10.0/24"]
+        },
+        "virtualNetwork_subnet_name": {
+            "value": "armassignmentvnetsubnet01"
+        },
+        "subnetAddressPrefix": {
+            "value": "10.0.10.0/27"
+        },
+        "storageAccount_name": {
+            "value": "storagev2"
+        },
+        "storageSku": {
+            "value": "Standard_RAGRS"
+        },
+        "storageAccessTier": {
+            "value": "Hot"
+        },
+        "webAppSvcPlanName": {
+            "value": "webAppSvcPlanXYZ"
+        },
+        "webAppSvcPlanSku": {
+            "value": {
+                "name": "F1",
+                "tier": "Free",
+                "size": "F1",
+                "family": "F",
+                "capacity": 0
+            }
+        }
+    }
+}
