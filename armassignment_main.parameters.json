@@ -22,7 +22,7 @@
             "value": "10.0.10.0/27"
         },
         "storageAccount_name": {
-            "value": "ArmAssignmentStorage"
+            "value": "armassignmentstorage"
         },
         "storageSku": {
             "value": "Standard_RAGRS"

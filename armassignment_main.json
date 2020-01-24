@@ -169,7 +169,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
                         "dependsOn": [
-                "webappsvcplan"
+                "webappsvcplan","storage"
             ],
             "properties": {
                 "mode": "Incremental",
