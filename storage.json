@@ -57,6 +57,7 @@
             },
             "kind": "StorageV2",
             "properties": {
+                "isHnsEnabled": true,
                 "networkAcls": {
                     "bypass": "AzureServices",
                     "virtualNetworkRules": [
