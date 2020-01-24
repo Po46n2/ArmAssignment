@@ -8,18 +8,34 @@
         },
         "storageSku": {
             "defaultValue": "Standard_RAGRS",
-            "type": "String"
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_ZRS",
+                "Standard_GRS",
+                "Standard_RAGRS"
+            ],
+            "type": "String",
+            "metadata": {
+                "description": "Defines the type of storage account to use for the data lake store"
+            }
+
         },
         "storageAccessTier": {
             "defaultValue": "Hot",
-            "type": "String"
-        },
-        "storageTier": {
-            "defaultValue": "Standard",
-            "type": "String"
+            "allowedValues": [
+                "Hot",
+                "Cool"
+            ],
+            "type": "String",
+            "metadata": {
+                "description": "Defines the storage account access tier to use for the data lake store"
+            }
         },
         "subnetFullPath": {
-            "type": "String"
+            "type": "String",
+            "metadata": {
+                "description": "Full path to the vNet Subnet"
+            }
         },
         "location": {
             "defaultValue": "westeurope",
@@ -37,8 +53,7 @@
             "name": "[parameters('storageAccount_name')]",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('storageSku')]",
-                "tier": "[parameters('storageTier')]"
+                "name": "[parameters('storageSku')]"
             },
             "kind": "StorageV2",
             "properties": {
