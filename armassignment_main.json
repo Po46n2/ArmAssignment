@@ -76,6 +76,13 @@
             "metadata": {
                 "description": "App Svc Plan SKU."
             }
+        },
+        "webAppName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+            "description": "Name of web site."
+            }
         }
     },
     "variables": {"subnetId": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',parameters('virtualNetwork_name'),'/subnets/',parameters('virtualNetwork_subnet_name'))]"},
@@ -135,7 +142,7 @@
                     "storageAccount_name": {"value":"[parameters('storageAccount_name')]"},
                     "storageSku": {"value":"[parameters('storageSku')]"},
                     "storageAccessTier": {"value":"[parameters('storageAccessTier')]"},
-                    "subnetId": {"value":"[parameters('subnetId')]"},
+                    "subnetId": {"value":"[variables('subnetId')]"},
                     "location": {"value":"[parameters('location')]"}
                 }
             }
@@ -153,6 +160,27 @@
                 "parameters": {
                     "webAppSvcPlanName": {"value":"[parameters('webAppSvcPlanName')]"},
                     "webAppSvcPlanSku": {"value":"[parameters('webAppSvcPlanSku')]"},
+                    "location": {"value":"[parameters('location')]"}
+                }
+            }
+        },
+        {
+            "name": "webappsite",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+                        "dependsOn": [
+                "webappsvcplan"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('artifactsLocation'),'/webappsite.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webAppSvcPlanName": {"value":"[parameters('webAppSvcPlanName')]"},
+                    "webAppName": {"value":"[parameters('webAppName')]"},
+                    "storageAccount_name": {"value":"[parameters('storageAccount_name')]"},
                     "location": {"value":"[parameters('location')]"}
                 }
             }

@@ -7,7 +7,7 @@
             "value": "https://raw.githubusercontent.com/Po46n2/ArmAssignment/master"  
         },
         "virtualNetwork_name": {
-            "value": "armassignmentvnet"
+            "value": "ArmAssignmentVnet"
         },
         "location": {
             "value": "westeurope"
@@ -16,13 +16,13 @@
             "value": ["10.0.10.0/24"]
         },
         "virtualNetwork_subnet_name": {
-            "value": "armassignmentvnetsubnet01"
+            "value": "ArmAssignmentSubnet"
         },
         "subnetAddressPrefix": {
             "value": "10.0.10.0/27"
         },
         "storageAccount_name": {
-            "value": "storagev2"
+            "value": "ArmAssignmentStorage"
         },
         "storageSku": {
             "value": "Standard_RAGRS"
@@ -31,7 +31,7 @@
             "value": "Hot"
         },
         "webAppSvcPlanName": {
-            "value": "webAppSvcPlanXYZ"
+            "value": "ArmAssignmentWebAppSvcPlan"
         },
         "webAppSvcPlanSku": {
             "value": {
@@ -41,6 +41,9 @@
                 "family": "F",
                 "capacity": 0
             }
+        },
+        "webAppName": {
+            "value": "ArmAssignmentWebApp"
         }
     }
 }
