@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccount_name": {
-            "defaultValue": "storagev2",
+            "defaultValue": "storagev2z",
             "type": "String"
         },
         "storageSku": {
@@ -31,10 +31,10 @@
                 "description": "Defines the storage account access tier to use for the data lake store"
             }
         },
-        "virtualNetwork_subnet_name": {
+        "subnetId": {
             "type": "String",
             "metadata": {
-                "description": "Virtual Network's Subnet name"
+                "description": "Virtual Network's Subnet Id"
             }
         },
         "location": {
@@ -62,7 +62,7 @@
                     "bypass": "AzureServices",
                     "virtualNetworkRules": [
                         {
-                            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetwork_subnet_name'))]",
+                            "id": "[parameters('subnetId')]",
                             "action": "Allow",
                             "state": "Succeeded"
                         }

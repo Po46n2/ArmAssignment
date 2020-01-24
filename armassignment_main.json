@@ -78,7 +78,7 @@
             }
         }
     },
-    "variables": {},
+    "variables": {"subnetId": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',parameters('virtualNetwork_name'),'/subnets/',parameters('virtualNetwork_subnet_name'))]"},
     "resources": [
         {
             "name": "vnet",
@@ -135,7 +135,7 @@
                     "storageAccount_name": {"value":"[parameters('storageAccount_name')]"},
                     "storageSku": {"value":"[parameters('storageSku')]"},
                     "storageAccessTier": {"value":"[parameters('storageAccessTier')]"},
-                    "virtualNetwork_subnet_name": {"value":"[variables('virtualNetwork_subnet_name')]"},
+                    "subnetId": {"value":"[parameters('subnetId')]"},
                     "location": {"value":"[parameters('location')]"}
                 }
             }
