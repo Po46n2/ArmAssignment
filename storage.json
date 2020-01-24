@@ -35,9 +35,6 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
             "name": "[parameters('storageAccount_name')]",
-            "dependsOn": [
-                "subnet"
-            ],
             "location": "[parameters('location')]",
             "sku": {
                 "name": "[parameters('storageSku')]",
