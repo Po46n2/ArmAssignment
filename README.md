@@ -1,7 +1,7 @@
 ### ArmAssignment
 
 
-This ARM Template creates:
+These ARM Templates create:
 * A Virtual Network
   * A Subnet
     * A Service Endpoint for Storage
