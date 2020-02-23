@@ -71,7 +71,7 @@
             "description": "Name of AppSvc Plan."
             }
         },
-            "webAppSvcPlanSku": {
+        "webAppSvcPlanSku": {
             "type": "object",
             "metadata": {
                 "description": "App Svc Plan SKU."
@@ -85,7 +85,10 @@
             }
         }
     },
-    "variables": {"subnetId": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',parameters('virtualNetwork_name'),'/subnets/',parameters('virtualNetwork_subnet_name'))]"},
+    "variables": {
+        "subnetId": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',parameters('virtualNetwork_name'),'/subnets/',parameters('virtualNetwork_subnet_name'))]",
+        "webAppSiteObjectId": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'Microsoft.Web/sites/',parameters('webAppName'))]"
+    },
     "resources": [
         {
             "name": "vnet",

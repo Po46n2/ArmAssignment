@@ -4,7 +4,7 @@
     "parameters": {
 
         "artifactsLocation": {
-            "value": "https://raw.githubusercontent.com/Po46n2/ArmAssignment/master"  
+            "value": "https://raw.githubusercontent.com/Po46n2/x/master"  
         },
         "virtualNetwork_name": {
             "value": "ArmAssignmentVnet"
